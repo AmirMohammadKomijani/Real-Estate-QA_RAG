@@ -1,31 +1,38 @@
-# Real Estate QA System using Retrieval-Augmented Generation (RAG)
+# Real Estate QA System using Retrieval-Augmented Generation (RAG) with LLaMA-3
 
 ## Project Overview
-This project presents a robust, domain-specific Question Answering (QA) system tailored for the real estate industry. Leveraging Retrieval-Augmented Generation (RAG), this system is designed to accurately retrieve relevant real estate information and generate natural language responses to user queries. By combining retrieval techniques and large language models, this project demonstrates a sophisticated approach to providing accurate, context-aware answers in real estate.
+This project showcases a sophisticated Question Answering (QA) system tailored for the real estate domain. Utilizing Retrieval-Augmented Generation (RAG) techniques, the system combines document retrieval with natural language generation to provide accurate and context-rich answers. The integration of **NousResearch LLaMA-3** for language generation ensures that responses are not only relevant but also well-articulated, making this QA system an ideal tool for real estate inquiries.
 
 ### Key Objectives
-- Implement a Retrieval-Augmented Generation (RAG) pipeline for domain-specific question answering.
-- Utilize advanced NLP techniques for accurate information retrieval and natural language response generation.
-- Optimize for speed and accuracy to provide a seamless user experience.
+- Implement a domain-specific RAG pipeline to deliver precise, relevant answers in the real estate context.
+- Leverage advanced NLP techniques for document retrieval and language generation.
+- Ensure seamless integration and performance optimization for real estate QA applications.
 
 ## Data
-The dataset comprises a curated collection of real estate documents, FAQs, and property-related information, which serves as the knowledge base for the retrieval system. This ensures that the QA system can handle queries ranging from general real estate terms to specific property inquiries.
+The QA system utilizes a dataset comprising real estate documents, FAQs, property listings, and transactional records. This comprehensive knowledge base ensures the system can address a wide range of real estate-related queries, from property details to market trends.
+
+## How RAG Works for Real Estate QA
+The RAG system combines retrieval and generation to enhance response accuracy and contextual relevance:
+
+1. **Retrieval**:
+   - A FAISS (Facebook AI Similarity Search) index is built on the real estate dataset, enabling fast and efficient retrieval of contextually relevant documents.
+   - For each user query, Sentence Transformers are used to encode the query into a vector that captures its semantic meaning.
+   - FAISS performs a similarity search, retrieving the most relevant documents from the indexed dataset, ensuring the system provides answers grounded in factual real estate information.
+
+2. **Generation**:
+   - **NousResearch LLaMA-3** is employed to generate responses based on both the user’s query and the retrieved documents. The model synthesizes the information to produce coherent, context-aware answers.
+   - This two-step process ensures that responses are not only factual but also fluid and comprehensive, drawing from the most relevant sections of the real estate dataset.
 
 ## Model Architecture and Components
 ### 1. **Retrieval Component**
-   - The retrieval system is built using [specific tools or libraries, such as Elasticsearch, FAISS, or BM25], which are configured to index the real estate dataset and retrieve contextually relevant documents.
-   - Each query is vectorized using a pre-trained embedding model, ensuring high semantic relevance during retrieval.
+   - FAISS indexing is used for fast similarity search over the vectorized real estate knowledge base.
+   - Sentence Transformers provide semantic encoding for the queries, ensuring that retrieval is based on meaning rather than mere keyword matches.
 
-### 2. **Generator Component**
-   - The generative model used is [specific model name, such as `facebook/rag-token-nq` or `distilbert-base-uncased`], fine-tuned to generate concise and accurate responses based on the retrieved documents.
-   - This component integrates with the Hugging Face `transformers` library, enabling prompt-based text generation tailored for real estate queries.
+### 2. **Generative Component**
+   - **NousResearch LLaMA-3** is integrated using Hugging Face’s `transformers` library, allowing for seamless, high-quality natural language generation conditioned on the retrieved documents.
 
-### 3. **Retrieval-Augmented Generation (RAG) Pipeline**
-   - **Step 1**: **Query Encoding** – The input query is encoded into a dense vector representation.
-   - **Step 2**: **Document Retrieval** – Using the vectorized query, the most relevant real estate documents are retrieved from the indexed knowledge base.
-   - **Step 3**: **Response Generation** – The generative model produces a response by conditioning on the retrieved documents and the input query.
+### 3. **Pipeline Workflow**
+   - **Step 1**: Query Encoding – Encode the user query into a vector representation.
+   - **Step 2**: Document Retrieval – Retrieve the most contextually relevant documents from the FAISS index.
+   - **Step 3**: Response Generation – Generate a detailed answer using LLaMA-3, conditioned on the retrieved documents and query.
 
-## Setup and Installation
-To set up the project environment, ensure you have Python 3.8 or above, and install the necessary libraries:
-```bash
-pip install transformers faiss-cpu sentence-transformers

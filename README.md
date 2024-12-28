@@ -1,7 +1,7 @@
 # Real Estate QA System using Retrieval-Augmented Generation (RAG) with LLaMA-3
 
 ## Project Overview
-This project showcases a sophisticated Question Answering (QA) system tailored for the real estate domain. Utilizing Retrieval-Augmented Generation (RAG) techniques, the system combines document retrieval with natural language generation to provide accurate and context-rich answers. The integration of **NousResearch LLaMA-3** for language generation ensures that responses are not only relevant but also well-articulated, making this QA system an ideal tool for real estate inquiries.
+This project showcases a sophisticated Question Answering (QA) system tailored for the real estate domain. Utilizing Retrieval-Augmented Generation (RAG) techniques, the system combines document retrieval with natural language generation to provide accurate and context-rich answers. The integration of **gemma2-9b-it'** for language generation ensures that responses are not only relevant but also well-articulated, making this QA system an ideal tool for real estate inquiries.
 
 ### Key Objectives
 - Implement a domain-specific RAG pipeline to deliver precise, relevant answers in the real estate context.
@@ -20,7 +20,7 @@ The RAG system combines retrieval and generation to enhance response accuracy an
    - FAISS performs a similarity search, retrieving the most relevant documents from the indexed dataset, ensuring the system provides answers grounded in factual real estate information.
 
 2. **Generation**:
-   - **NousResearch LLaMA-3** is employed to generate responses based on both the user’s query and the retrieved documents. The model synthesizes the information to produce coherent, context-aware answers.
+   - **gemma2-9b-it'** is employed to generate responses based on both the user’s query and the retrieved documents. The model synthesizes the information to produce coherent, context-aware answers.
    - This two-step process ensures that responses are not only factual but also fluid and comprehensive, drawing from the most relevant sections of the real estate dataset.
 
 ## Model Architecture and Components
@@ -29,7 +29,7 @@ The RAG system combines retrieval and generation to enhance response accuracy an
    - Sentence Transformers provide semantic encoding for the queries, ensuring that retrieval is based on meaning rather than mere keyword matches.
 
 ### 2. **Generative Component**
-   - **NousResearch LLaMA-3** is integrated using Hugging Face’s `transformers` library, allowing for seamless, high-quality natural language generation conditioned on the retrieved documents.
+   - **gemma2-9b-it'** is integrated using Hugging Face’s `transformers` library, allowing for seamless, high-quality natural language generation conditioned on the retrieved documents.
 
 ### 3. **Pipeline Workflow**
    - **Step 1**: Query Encoding – Encode the user query into a vector representation.
